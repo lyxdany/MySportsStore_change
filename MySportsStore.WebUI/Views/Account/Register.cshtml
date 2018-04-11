@@ -1,0 +1,53 @@
+﻿
+
+@model MySportsStore.WebUI.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "账号创建不正确，请纠正错误的地方重来一次.")
+    <div>
+        <fieldset>
+            <legend>账号信息</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.UserEmail)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.UserEmail)
+                @Html.ValidationMessageFor(m => m.UserEmail)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.UserPwd)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.UserPwd)
+                @Html.ValidationMessageFor(m => m.UserPwd)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.ConfirmPassword)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+
+            <p>
+                <input type="submit" value="注册" />
+            </p>
+        </fieldset>
+    </div>
+}

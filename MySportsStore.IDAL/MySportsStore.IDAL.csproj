@@ -51,6 +51,7 @@
     <Compile Include="IDbSession.cs" />
     <Compile Include="IDbSessionFactory.cs" />
     <Compile Include="IProductRepository.cs" />
+    <Compile Include="IUserInfoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

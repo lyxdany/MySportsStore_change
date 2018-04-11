@@ -2,6 +2,7 @@
 using System.Net.Mail;
 using System.Text;
 using MySportsStore.WebUI.Abstract;
+using System.Reflection;
 
 namespace MySportsStore.WebUI.Concrete
 {
@@ -22,8 +23,8 @@ namespace MySportsStore.WebUI.Concrete
         public void ProcessOrder(Models.Cart cart, Model.ShippingDetail shippingDetail)
         {
             MailMessage mailMsg = new MailMessage();
-            mailMsg.From = new MailAddress("qdjjx9441@sina.com");
-            mailMsg.To.Add(new MailAddress("764190362@qq.com"));
+            mailMsg.From = new MailAddress("nenglong_dba_03@163.com");
+            mailMsg.To.Add(new MailAddress("2853738111@qq.com"));
             mailMsg.Subject = "新订单";          
 
             //邮件内容主体
@@ -41,15 +42,19 @@ namespace MySportsStore.WebUI.Concrete
             body.AppendFormat("总计:{0:c}", cart.ComputeTotalValue());
             body.AppendLine("<br />");
             body.AppendLine("收货人信息：");
-            body.AppendLine(shippingDetail.Name);
-            body.AppendLine(shippingDetail.Line);
+
+            //获取类属性值
+            foreach (PropertyInfo item in shippingDetail.GetType().GetProperties())
+            {
+                body.AppendLine(item.GetValue(shippingDetail,null).ToString());
+            }
             body.AppendLine("<br />");
 
 
             mailMsg.Body = body.ToString();
             mailMsg.IsBodyHtml = true;
-            SmtpClient smtpClient = new SmtpClient("smtp.sina.com");
-            smtpClient.Credentials = new NetworkCredential("yourusername", "yourpassword");
+            SmtpClient smtpClient = new SmtpClient("smtp.163.com");
+            smtpClient.Credentials = new NetworkCredential("nenglong_dba_03@163.com", "kbojfgdcohuprahy");
 
             //if (emailSettings.WriteAsFile)
             //{

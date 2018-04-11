@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>N.OkonkwoCore.Business</id>
+    <version>2018.3.3.2</version>
+    <title>N.OkonkwoCore.Business</title>
+    <authors>O. Chris Okonkwo</authors>
+    <owners>O. Chris Okonkwo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>OkonkwoCore - Release</description>
+    <summary />
+    <copyright>Copyright ©  O. Chris Okonkwo 2016</copyright>
+    <dependencies />
+  </metadata>
+</package>

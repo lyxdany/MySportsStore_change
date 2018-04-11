@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using MySportsStore.IBLL;
 using MySportsStore.WebUI.Models;
 using Ninject;
+using MySportsStore.Model;
 
 namespace MySportsStore.WebUI.Controllers
 {
@@ -19,6 +20,7 @@ namespace MySportsStore.WebUI.Controllers
         public int PageSize = 4;
         public ViewResult List(string category, int page = 1)
         {
+            //LoadEntities查询
             //return View(ProductService.LoadEntities(p => true));
             int totalCount = 0;
             //return View(ProductService.LoadPageEntities(
@@ -34,6 +36,9 @@ namespace MySportsStore.WebUI.Controllers
                 PagingInfo = new PagingInfo(){CurrentPage = page, ItemsPerPage = PageSize, TotalItems = category == null ? ProductService.Count(p => true) : ProductService.Count(p => p.Category == category)},
                 CurrentCategory = category
             };
+
+
+
             return View(viewModel);
         }
 

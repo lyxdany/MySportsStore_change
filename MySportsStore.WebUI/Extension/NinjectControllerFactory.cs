@@ -12,6 +12,7 @@ namespace MySportsStore.WebUI.Extension
     {
         private IKernel ninjectKernel;
 
+        //扩展
         public NinjectControllerFactory()
         {
             ninjectKernel = new StandardKernel();
@@ -25,12 +26,15 @@ namespace MySportsStore.WebUI.Extension
 
         private void AddBindings()
         {
+            //如果有其他新增类型这里做绑定
             ninjectKernel.Bind<IProductService>().To<ProductService>();
+            ninjectKernel.Bind<IUserInfoService>().To<UserInfoService>();
 
             //EmailSettings emailSettings = new EmailSettings()
             //{
             //    WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
             //};
+            
             ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>();
         }
     }

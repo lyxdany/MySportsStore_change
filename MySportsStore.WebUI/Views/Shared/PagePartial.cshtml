@@ -1,0 +1,71 @@
+﻿@model  Mvc4_Longi_Demo.Models.PageModel
+
+<ul class="pagination">
+    @{
+        //页码逻辑运算
+        double d = (double)Model.DataCount / Model.PageSize;
+        int pageNum = (int)Math.Ceiling(d);
+        Model.Page = Model.Page < 1 ? 1 : Model.Page;
+        Model.Page = Model.Page > pageNum ? pageNum : Model.Page;
+        Model.PageSize = Model.PageSize > Model.MaxPage ? Model.MaxPage : Model.PageSize;
+        int startNum, endNum;
+        if (Model.Page > Model.NumsOfLeft)
+        {
+            endNum = Model.Page + Model.NumsOfRight;
+        }
+        else
+        {
+            endNum = Model.Page + Model.NumsOfRight + (Model.NumsOfLeft - Model.Page + 1);
+        }
+        if (pageNum - Model.Page >= Model.NumsOfRight)
+        {
+            startNum = Model.Page - Model.NumsOfLeft;
+        }
+        else
+        {
+            startNum = Model.Page - Model.NumsOfLeft - (Model.NumsOfRight - (pageNum - Model.Page));
+        }
+        startNum = startNum < 1 ? 1 : startNum;
+        endNum = endNum > pageNum ? pageNum : endNum;
+        //END 页码逻辑运算
+
+        //开始显示页码
+        
+        //显示首页
+        if (pageNum == 1 || Model.Page == 1)
+        {
+            <li class="disabled"><a href="#" onclick="return false;">&laquo;</a></li>
+        }
+        else
+        {
+            <li><a href="@Model.Url">&laquo;</a></li>
+        }
+        //END 显示首页
+
+        //显示页码
+        for (int i = startNum; i <= endNum; i++)
+        {
+            if (i == Model.Page)
+            {
+                <li class="active"><a href="#" onclick="return false;">@i</a></li>
+            }
+            else
+            {
+                <li><a href="@Model.Url@i">@i</a></li>
+            }
+
+        }
+        //END 显示页码
+
+        //显示尾页
+        if (pageNum == 1 || Model.Page == pageNum)
+        {
+            <li class="disabled"><a href="#" onclick="return false;">&raquo;</a></li>
+        }
+        else
+        {
+            <li><a href="@Model.Url@pageNum">&raquo;</a></li>
+        }
+        //END 显示尾页
+    }
+</ul>

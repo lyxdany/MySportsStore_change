@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>NPOI.HWPF</id>
+    <version>2.3.0</version>
+    <title>NPOI.HWPF</title>
+    <authors>Tony Qu,Rye Loken,Jsakamoto,Carey Tzou</authors>
+    <owners>Tony Qu,Rye Loken,Jsakamoto,Carey Tzou</owners>
+    <licenseUrl>http://npoi.codeplex.com/license</licenseUrl>
+    <projectUrl>https://github.com/ziyunhx/npoi</projectUrl>
+    <iconUrl>http://download-codeplex.sec.s-msft.com/Download?ProjectName=npoi&amp;DownloadId=155905&amp;Build=20959</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Let the NPOI to support doc(Word 97-2003).</description>
+    <summary>This project let the NPOI to support doc(Word 97-2003).</summary>
+    <releaseNotes>2.3.0
+      BUG Fixes
+      - resolve the bug when load HWPFDocument from file.</releaseNotes>
+    <copyright>Neuzilla</copyright>
+    <tags>npoi Word docx doc</tags>
+    <dependencies>
+      <dependency id="SharpZipLib" version="0.86.0" />
+      <dependency id="NPOI" version="2.3.0" />
+    </dependencies>
+  </metadata>
+</package>

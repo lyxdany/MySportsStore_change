@@ -11,6 +11,13 @@
        <input type="submit" value="+放入购物车"/>
    }
 
+   @*  @using (Ajax.BeginForm("AddToCart", "Cart", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "div_uid", InsertionMode = InsertionMode.Replace }))
+   {
+       @Html.HiddenFor(p => p.Id)
+       @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+       <input type="submit" value="+放入购物车"/>
+   }*@
+
     <h4>@Model.Price.ToString("c")</h4>
 </div>
 

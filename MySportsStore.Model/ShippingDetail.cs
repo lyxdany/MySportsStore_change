@@ -11,5 +11,8 @@ namespace MySportsStore.Model
         [Required(ErrorMessage = "必填")]
         [Display(Name = "地址")]
         public string Line { get; set; }
+        [Required(ErrorMessage = "必填")]
+        [Display(Name = "手机")]
+        public string Mobile { get; set; }
     }
 }

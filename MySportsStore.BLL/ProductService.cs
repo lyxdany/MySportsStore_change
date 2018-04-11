@@ -9,6 +9,7 @@ namespace MySportsStore.BLL
 
         public override bool SetCurrentRepository()
         {
+            //若是其他XXXservice对应的就是DbSessionContext.xxxRepository
             this.CurrentRepository = DbSessionContext.ProductRepository;
             this.AddDisposableObject(this.CurrentRepository);
             return true;

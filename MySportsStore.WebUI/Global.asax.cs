@@ -8,6 +8,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using MySportsStore.WebUI.Extension;
 using MySportsStore.WebUI.Models;
+using System.Web.Security;
+using System.Security.Principal;
 
 namespace MySportsStore.WebUI
 {
@@ -27,6 +29,22 @@ namespace MySportsStore.WebUI
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
+        }
+
+        public MvcApplication()
+        {
+            AuthorizeRequest += new EventHandler(MvcApplication_AuthorizeRequest);
+        }
+
+        //
+        void MvcApplication_AuthorizeRequest(object sender, EventArgs e)
+        {
+            var id = Context.User.Identity as FormsIdentity;
+            if (id != null && id.IsAuthenticated)
+            {
+                var roles = id.Ticket.UserData.Split(',');
+                Context.User = new GenericPrincipal(id, roles);
+            }
         }
     }
 }

@@ -57,8 +57,20 @@ namespace MySportsStore.WebUI.Controllers
             });
         }
 
+        ////添加到购物车
+        //public RedirectToRouteResult AddToCart(Cart cart, int Id, string returnUrl)
+        //{
+        //    Product product = ProductService.LoadEntities(p => p.Id == Id).FirstOrDefault();
+        //    if (product != null)
+        //    {
+        //        //GetCart().AddItem(product, 1);
+        //        cart.AddItem(product, 1);
+        //    }
+        //    return RedirectToAction("list","Product", new {returnUrl});
+        //}
+
         //添加到购物车
-        public RedirectToRouteResult AddToCart(Cart cart, int Id, string returnUrl)
+        public void AddToCart(Cart cart, int Id, string returnUrl)
         {
             Product product = ProductService.LoadEntities(p => p.Id == Id).FirstOrDefault();
             if (product != null)
@@ -66,7 +78,9 @@ namespace MySportsStore.WebUI.Controllers
                 //GetCart().AddItem(product, 1);
                 cart.AddItem(product, 1);
             }
-            return RedirectToAction("Index", new {returnUrl});
+            //重定向
+            Response.Redirect(returnUrl);
+            //return RedirectToAction("list","Product", new {returnUrl});
         }
 
         //从购物车移除

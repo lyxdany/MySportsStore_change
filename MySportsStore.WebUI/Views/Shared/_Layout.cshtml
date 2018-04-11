@@ -7,9 +7,26 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 </head>
     <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
+                            <li>@Html.ActionLink("关于", "About", "Home")</li>
+                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
         <div id="header" style="height: 200px;">
              @{Html.RenderAction("Summary", "Cart");}
-            <div class="title">体育用品商店</div>
+            <div><span>登录</span></div>
+            <div class="title">报表展示系统</div>
         </div>
         <div id="categories">
             @{Html.RenderAction("Menu","Nav");}

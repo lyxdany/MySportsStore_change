@@ -1,0 +1,42 @@
+﻿
+@model MySportsStore.WebUI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_1.cshtml";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "账号不存在或密码不对，请重新输入.")
+    <div>
+        <fieldset>
+            <legend>登录</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+
+            <div class="editor-field">
+                @Html.LabelFor(m=>m.RememberMe)
+                @Html.CheckBoxFor(m=>m.RememberMe)
+            </div>
+
+            <p>
+                <input type="submit" value="登录" />
+            </p>
+        </fieldset>
+    </div>
+}
